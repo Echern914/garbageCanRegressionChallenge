@@ -175,6 +175,79 @@ print(f"The regression line shows a strong positive relationship (R² = {r_squar
 print(f"between StressSurvey and Anxiety, with a correlation of {correlation:.4f}.")
 ```
 
+## Question 3: Run a bivariate regression showing the relationship between Time and Anxiety
+
+Now let's examine the relationship between Time and Anxiety, which is part of the true relationship but often overlooked.
+
+```{python}
+#| echo: false
+# Run bivariate regression of Anxiety on Time
+X_time = observDF[['Time']].values
+y_time = observDF['Anxiety'].values
+
+# Fit the linear regression model for Time
+model_time = LinearRegression()
+model_time.fit(X_time, y_time)
+
+# Get predictions
+y_pred_time = model_time.predict(X_time)
+
+# Display results
+print("=== TIME-ANXIETY REGRESSION RESULTS ===")
+print(f"Intercept (β₀): {model_time.intercept_:.6f}")
+print(f"Slope (β₁): {model_time.coef_[0]:.6f}")
+print(f"R-squared: {r2_score(y_time, y_pred_time):.6f}")
+print(f"RMSE: {np.sqrt(mean_squared_error(y_time, y_pred_time)):.6f}")
+
+# Create scatter plot with regression line
+plt.figure(figsize=(12, 8))
+
+# Scatter plot with regression line
+plt.scatter(observDF['Time'], observDF['Anxiety'], alpha=0.7, color='darkgreen', s=80, edgecolors='white', linewidth=1)
+plt.plot(observDF['Time'], y_pred_time, color='red', linewidth=3, label=f'Regression Line: y = {model_time.intercept_:.3f} + {model_time.coef_[0]:.3f}x')
+
+# Add coordinate points for each data point
+for i, row in observDF.iterrows():
+    plt.annotate(f'({row["Time"]}, {row["Anxiety"]})', 
+                (row['Time'], row['Anxiety']),
+                xytext=(5, 5), textcoords='offset points',
+                fontsize=9, alpha=0.8, color='darkgreen',
+                bbox=dict(boxstyle='round,pad=0.3', facecolor='white', alpha=0.7, edgecolor='none'))
+
+# Add some styling
+plt.xlabel('Time', fontsize=12, fontweight='bold')
+plt.ylabel('Anxiety Level', fontsize=12, fontweight='bold')
+plt.title('Relationship Between Time and Anxiety\nWith Linear Regression Line and Coordinate Points', fontsize=14, fontweight='bold')
+plt.legend(fontsize=11)
+plt.grid(True, alpha=0.3)
+
+# Add R-squared and correlation info
+r_squared_time = r2_score(y_time, y_pred_time)
+correlation_time = np.corrcoef(observDF['Time'], observDF['Anxiety'])[0,1]
+plt.text(0.05, 0.95, f'R² = {r_squared_time:.4f}\nCorrelation = {correlation_time:.4f}', 
+         transform=plt.gca().transAxes, fontsize=11, verticalalignment='top',
+         bbox=dict(boxstyle='round', facecolor='lightgreen', alpha=0.8))
+
+plt.tight_layout()
+plt.show()
+
+# Comment on the fit
+print("\n=== ANALYSIS OF THE TIME-ANXIETY FIT ===")
+print(f"The regression line shows a {('strong' if abs(correlation_time) > 0.7 else 'moderate' if abs(correlation_time) > 0.5 else 'weak')} relationship (R² = {r_squared_time:.4f})")
+print(f"between Time and Anxiety, with a correlation of {correlation_time:.4f}.")
+print(f"\nKey observations:")
+print(f"1. The true relationship includes Time with a coefficient of 0.1")
+print(f"2. Our estimated coefficient is {model_time.coef_[0]:.4f}")
+print(f"3. The model explains {r_squared_time:.1%} of the variance in Anxiety")
+print(f"4. This is much weaker than the StressSurvey relationship, but Time is still part of the true model")
+```
+
+### Commentary on the Time-Anxiety Relationship
+
+**What This Shows Us**: The relationship between Time and Anxiety is much weaker than what we saw with StressSurvey. This makes sense because Time is only one component of the true relationship, and it has a relatively small coefficient (0.1) in the actual data-generating process.
+
+
+
 
 
 
