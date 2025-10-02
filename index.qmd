@@ -3,43 +3,16 @@ title: "Garbage Can Regression Challenge"
 format:
   html: default
 execute:
-  echo: true
+  echo: false
   eval: true
 ---
 
-# Garbage Can Regression Challenge
+# Questions to answer for 75% grade on challenge
+
+## Question 1: Run a bivariate regression of anxiety on stresssurvey. What are the estimated coefficients? How do they compare to the true relationship?
 
 **Choose R or Python and delete the other code chunk.**
 
-## R Code
-
-```{r}
-#| echo: true
-library(tidyverse)
-library(broom)
-
-# Data with known true relationships: Anxiety = Stress + 0.1 × Time
-observDF <- tribble(
-  ~Stress, ~StressSurvey, ~Time, ~Anxiety,
-  0,0,0,0,
-  0,0,1,0.1,
-  0,0,1,0.1,
-  1,3,1,1.1,
-  1,3,1,1.1,
-  1,3,1,1.1,
-  2,6,2,2.2,
-  2,6,2,2.2,
-  2,6,2,2.2,
-  8,9,2,8.2,
-  8,9,2,8.2,
-  8,9,2.1,8.21,
-  12,12,2.2,12.22,
-  12,12,2.2,12.22,
-  12,12,2.2,12.22
-)
-
-observDF
-```
 
 ## Python Code
 
@@ -65,6 +38,97 @@ observDF = pd.DataFrame(data)
 print(observDF)
 ```
 
+## Question 1 Analysis: Bivariate Regression of Anxiety on StressSurvey
+
+Let's run the bivariate regression and examine how the estimated coefficients compare to the true relationship.
+
+### Python Analysis
+
+```{python}
+#| echo: true
+# Run bivariate regression of Anxiety on StressSurvey
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score, mean_squared_error
+
+# Prepare data for regression
+X = observDF[['StressSurvey']].values
+y = observDF['Anxiety'].values
+
+# Fit the linear regression model
+model = LinearRegression()
+model.fit(X, y)
+
+# Get predictions
+y_pred = model.predict(X)
+
+# Display results
+print("=== BIVARIATE REGRESSION RESULTS ===")
+print(f"Intercept (β₀): {model.intercept_:.6f}")
+print(f"Slope (β₁): {model.coef_[0]:.6f}")
+print(f"R-squared: {r2_score(y, y_pred):.6f}")
+print(f"RMSE: {np.sqrt(mean_squared_error(y, y_pred)):.6f}")
+
+# True relationship from the data generation
+print("\n=== TRUE RELATIONSHIP ===")
+print("True relationship: Anxiety = Stress + 0.1 × Time")
+print("But we're regressing Anxiety on StressSurvey, not Stress!")
+
+# Let's also check the correlation between Stress and StressSurvey
+correlation = np.corrcoef(observDF['Stress'], observDF['StressSurvey'])[0,1]
+print(f"\nCorrelation between Stress and StressSurvey: {correlation:.6f}")
+
+# Create visualization
+plt.figure(figsize=(12, 5))
+
+# Plot 1: Scatter plot with regression line
+plt.subplot(1, 2, 1)
+plt.scatter(observDF['StressSurvey'], observDF['Anxiety'], alpha=0.7, color='blue')
+plt.plot(observDF['StressSurvey'], y_pred, color='red', linewidth=2, label='Linear Fit')
+plt.xlabel('StressSurvey')
+plt.ylabel('Anxiety')
+plt.title('Bivariate Regression: Anxiety ~ StressSurvey')
+plt.legend()
+plt.grid(True, alpha=0.3)
+
+# Plot 2: Residuals plot
+plt.subplot(1, 2, 2)
+residuals = y - y_pred
+plt.scatter(y_pred, residuals, alpha=0.7, color='green')
+plt.axhline(y=0, color='red', linestyle='--')
+plt.xlabel('Predicted Anxiety')
+plt.ylabel('Residuals')
+plt.title('Residuals Plot')
+plt.grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+
+# Detailed coefficient interpretation
+print("\n=== COEFFICIENT INTERPRETATION ===")
+print(f"The estimated slope coefficient of {model.coef_[0]:.6f} suggests that")
+print(f"for every 1-unit increase in StressSurvey, Anxiety increases by {model.coef_[0]:.6f} units.")
+print(f"\nHowever, this interpretation is problematic because:")
+print(f"1. The true relationship is Anxiety = Stress + 0.1 × Time")
+print(f"2. We're using StressSurvey instead of Stress as the predictor")
+print(f"3. We're ignoring the Time variable entirely")
+print(f"4. StressSurvey and Stress have a correlation of {correlation:.6f}, but they're not the same variable")
+```
+
+### Key Findings and Interpretation Issues
+
+The bivariate regression reveals several critical problems:
+
+1. **Estimated Coefficients**: The model estimates a slope coefficient that captures the relationship between `StressSurvey` and `Anxiety`, but this is not the true causal relationship.
+
+2. **Missing Variables**: The true relationship includes both `Stress` and `Time`, but our bivariate model only considers `StressSurvey`.
+
+3. **Proxy Variable Issues**: `StressSurvey` serves as a proxy for `Stress`, but they are not identical, leading to measurement error and biased estimates.
+
+4. **Model Specification Error**: By excluding `Time` from the model, we're violating the true data-generating process.
+
+This demonstrates why we must be skeptical of regression results - the estimated coefficients can be misleading when the model is misspecified or when we use proxy variables instead of the true predictors.
+
 ## Your Analysis
 
-Follow the challenge instructions from your course to complete your analysis.
+Continue with the remaining questions following this analytical framework.
+
