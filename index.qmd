@@ -38,14 +38,19 @@ observDF = pd.DataFrame(data)
 print(observDF)
 ```
 
+## Your Analysis
+
+Continue with the remaining questions following this analytical framework.
+
+
 ## Question 1 Analysis: Bivariate Regression of Anxiety on StressSurvey
 
-Let's run the bivariate regression and examine how the estimated coefficients compare to the true relationship.
+run the bivariate regression and examine how the estimated coefficients compare to the true relationship.
 
 ### Python Analysis
 
 ```{python}
-#| echo: true
+#| echo: false
 # Run bivariate regression of Anxiety on StressSurvey
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score, mean_squared_error
@@ -115,31 +120,16 @@ plt.tight_layout()
 plt.show()
 
 # Detailed coefficient interpretation
-print("\n=== COEFFICIENT INTERPRETATION ===")
+print("\nCOEFFICIENT INTERPRETATION")
 print(f"The estimated slope coefficient of {model.coef_[0]:.6f} suggests that")
 print(f"for every 1-unit increase in StressSurvey, Anxiety increases by {model.coef_[0]:.6f} units.")
-print(f"\nHowever, this interpretation is problematic because:")
-print(f"1. The true relationship is Anxiety = Stress + 0.1 × Time")
-print(f"2. We're using StressSurvey instead of Stress as the predictor")
-print(f"3. We're ignoring the Time variable entirely")
-print(f"4. StressSurvey and Stress have a correlation of {correlation:.6f}, but they're not the same variable")
+
 ```
 
-### Key Findings and Interpretation Issues
+### What This Tells Us About Linear Regression
 
-The bivariate regression reveals several critical problems:
+Looking at these results, we can see some pretty significant issues with how we're interpreting our regression model, This is exactly why we need to be careful with regression results. The numbers might look convincing, but if our model doesn’t capture the real-world relationships, those numbers can lead us to the wrong conclusions.
 
-1. **Estimated Coefficients**: The model estimates a slope coefficient that captures the relationship between `StressSurvey` and `Anxiety`, but this is not the true causal relationship.
 
-2. **Missing Variables**: The true relationship includes both `Stress` and `Time`, but our bivariate model only considers `StressSurvey`.
 
-3. **Proxy Variable Issues**: `StressSurvey` serves as a proxy for `Stress`, but they are not identical, leading to measurement error and biased estimates.
-
-4. **Model Specification Error**: By excluding `Time` from the model, we're violating the true data-generating process.
-
-This demonstrates why we must be skeptical of regression results - the estimated coefficients can be misleading when the model is misspecified or when we use proxy variables instead of the true predictors.
-
-## Your Analysis
-
-Continue with the remaining questions following this analytical framework.
 
