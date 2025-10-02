@@ -17,7 +17,7 @@ execute:
 ## Python Code
 
 ```{python}
-#| echo: true
+#| echo: false
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -77,28 +77,39 @@ print("But we're regressing Anxiety on StressSurvey, not Stress!")
 correlation = np.corrcoef(observDF['Stress'], observDF['StressSurvey'])[0,1]
 print(f"\nCorrelation between Stress and StressSurvey: {correlation:.6f}")
 
-# Create visualization
-plt.figure(figsize=(12, 5))
+# Create two specific visualizations for Question 1
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6))
 
-# Plot 1: Scatter plot with regression line
-plt.subplot(1, 2, 1)
-plt.scatter(observDF['StressSurvey'], observDF['Anxiety'], alpha=0.7, color='blue')
-plt.plot(observDF['StressSurvey'], y_pred, color='red', linewidth=2, label='Linear Fit')
-plt.xlabel('StressSurvey')
-plt.ylabel('Anxiety')
-plt.title('Bivariate Regression: Anxiety ~ StressSurvey')
-plt.legend()
-plt.grid(True, alpha=0.3)
+# Graph 1: Estimated Coefficients
+ax1.scatter(observDF['StressSurvey'], observDF['Anxiety'], alpha=0.7, color='blue', s=60, label='Observed Data')
+ax1.plot(observDF['StressSurvey'], y_pred, color='red', linewidth=3, label=f'Estimated Line: y = {model.intercept_:.3f} + {model.coef_[0]:.3f}x')
+ax1.set_xlabel('StressSurvey', fontsize=12)
+ax1.set_ylabel('Anxiety', fontsize=12)
+ax1.set_title('Estimated Coefficients: Bivariate Regression\nAnxiety ~ StressSurvey', fontsize=14, fontweight='bold')
+ax1.legend(fontsize=10)
+ax1.grid(True, alpha=0.3)
+ax1.text(0.05, 0.95, f'Slope (β₁): {model.coef_[0]:.4f}\nIntercept (β₀): {model.intercept_:.4f}\nR²: {r2_score(y, y_pred):.4f}', 
+         transform=ax1.transAxes, fontsize=10, verticalalignment='top',
+         bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.8))
 
-# Plot 2: Residuals plot
-plt.subplot(1, 2, 2)
-residuals = y - y_pred
-plt.scatter(y_pred, residuals, alpha=0.7, color='green')
-plt.axhline(y=0, color='red', linestyle='--')
-plt.xlabel('Predicted Anxiety')
-plt.ylabel('Residuals')
-plt.title('Residuals Plot')
-plt.grid(True, alpha=0.3)
+# Graph 2: Compare to True Relationships
+# Calculate true relationship values
+true_anxiety = observDF['Stress'] + 0.1 * observDF['Time']
+ax2.scatter(observDF['StressSurvey'], observDF['Anxiety'], alpha=0.7, color='blue', s=60, label='Observed Anxiety')
+ax2.scatter(observDF['StressSurvey'], true_anxiety, alpha=0.7, color='green', s=60, marker='s', label='True Relationship: Stress + 0.1×Time')
+ax2.plot(observDF['StressSurvey'], y_pred, color='red', linewidth=3, label=f'Estimated Line: y = {model.intercept_:.3f} + {model.coef_[0]:.3f}x')
+ax2.set_xlabel('StressSurvey', fontsize=12)
+ax2.set_ylabel('Anxiety', fontsize=12)
+ax2.set_title('Comparison: Estimated vs True Relationships', fontsize=14, fontweight='bold')
+ax2.legend(fontsize=10)
+ax2.grid(True, alpha=0.3)
+
+# Add comparison text
+mse_estimated = mean_squared_error(observDF['Anxiety'], y_pred)
+mse_true = mean_squared_error(observDF['Anxiety'], true_anxiety)
+ax2.text(0.05, 0.95, f'True relationship: Anxiety = Stress + 0.1×Time\nMSE (Estimated): {mse_estimated:.4f}\nMSE (True): {mse_true:.4f}', 
+         transform=ax2.transAxes, fontsize=10, verticalalignment='top',
+         bbox=dict(boxstyle='round', facecolor='lightgreen', alpha=0.8))
 
 plt.tight_layout()
 plt.show()
