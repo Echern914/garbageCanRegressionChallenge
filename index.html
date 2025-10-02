@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="python-code" class="level2">
 <h2 class="anchored" data-anchor-id="python-code">Python Code</h2>
-<div id="e8360fe9" class="cell" data-execution_count="1">
+<div id="7f8514a7" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>    Stress  StressSurvey  Time  Anxiety
 0        0             0   0.0     0.00
@@ -102,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
 <p>run the bivariate regression and examine how the estimated coefficients compare to the true relationship.</p>
 <section id="python-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="python-analysis">Python Analysis</h3>
-<div id="0b26591a" class="cell" data-execution_count="2">
+<div id="88347acf" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>=== BIVARIATE REGRESSION RESULTS ===
 Intercept (β₀): -1.524000
@@ -127,24 +127,38 @@ Correlation between Stress and StressSurvey: 0.946813</code></pre>
 <pre><code>
 COEFFICIENT INTERPRETATION
 The estimated slope coefficient of 1.047000 suggests that
-for every 1-unit increase in StressSurvey, Anxiety increases by 1.047000 units.
-
-However, this interpretation is problematic because:
-1. The true relationship is Anxiety = Stress + 0.1 × Time
-2. We're using StressSurvey instead of Stress as the predictor
-3. We're ignoring the Time variable entirely
-4. StressSurvey and Stress have a correlation of 0.946813, but they're not the same variable</code></pre>
+for every 1-unit increase in StressSurvey, Anxiety increases by 1.047000 units.</code></pre>
 </div>
 </div>
 </section>
 <section id="what-this-tells-us-about-linear-regression" class="level3">
 <h3 class="anchored" data-anchor-id="what-this-tells-us-about-linear-regression">What This Tells Us About Linear Regression</h3>
-<p>Looking at these results, we can see some pretty significant issues with how we’re interpreting our regression model:</p>
-<p><strong>The Big Picture Problem</strong>: We’re trying to understand anxiety by looking at stress survey responses, but we’re missing the bigger picture. The true relationship involves both actual stress levels AND time, but our simple linear model only looks at the survey responses.</p>
-<p><strong>The Proxy Variable Trap</strong>: We’re using stress survey responses as a substitute for actual stress levels, but just because two things are related doesn’t mean they’re the same thing. It’s like using someone’s height to predict their weight - there’s definitely a relationship, but height alone won’t give you the full story.</p>
-<p><strong>What We’re Missing</strong>: By focusing only on the stress survey and ignoring time, we’re essentially looking at a simplified version of reality. It’s like trying to understand a movie by only watching every third scene - you might get the general idea, but you’ll miss crucial details that change the whole meaning.</p>
-<p>This is exactly why we need to be careful with regression results. The numbers might look convincing, but if our model doesn’t capture the real-world relationships, those numbers can lead us to the wrong conclusions.</p>
+<p>Looking at these results, we can see some pretty significant issues with how we’re interpreting our regression model, This is exactly why we need to be careful with regression results. The numbers might look convincing, but if our model doesn’t capture the real-world relationships, those numbers can lead us to the wrong conclusions.</p>
 </section>
+</section>
+<section id="question-2-create-a-scatter-plot-with-the-regression-line-showing-the-relationship-between-stresssurvey-and-anxiety" class="level2">
+<h2 class="anchored" data-anchor-id="question-2-create-a-scatter-plot-with-the-regression-line-showing-the-relationship-between-stresssurvey-and-anxiety">Question 2: Create a scatter plot with the regression line showing the relationship between StressSurvey and Anxiety</h2>
+<p>Let’s create a focused scatter plot to examine the relationship between StressSurvey and Anxiety, and comment on the fit and potential issues.</p>
+<div id="58f5d28d" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-4-output-1.png" width="1137" height="756" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>=== ANALYSIS OF THE FIT ===
+The regression line shows a strong positive relationship (R² = 0.9011)
+between StressSurvey and Anxiety, with a correlation of 0.9493.
+
+However, there are several potential issues to consider:
+1. The relationship appears linear, but this might be misleading
+2. We're using StressSurvey as a proxy for actual Stress levels
+3. The model ignores the Time variable that's part of the true relationship
+4. High R² doesn't guarantee we have the right model - just a good fit to the data we're using</code></pre>
+</div>
+</div>
 </section>
 </section>
 
