@@ -449,8 +449,6 @@ plt.show()
 
 ## Question 2: Model Comparison
 
-
-
 ```{python}
 #| echo: false
 # Display model comparison results
