@@ -503,10 +503,10 @@ print(f"• Proxy variables can mislead even in multiple regression settings")
 
 ## Question 1: Reflect on real world implications
 
-If the second multiple regression model suggested a **statistically significant positive relationship** between social media use and anxiety, a popular press outlet would likely run with a **catchy, exaggerated headline** such as:  
-**“More Time on Social Media Directly Increases Teen Anxiety, Study Finds.”**  
-The press tends to simplify and dramatize findings for clicks and public interest, even if the nuance in the actual academic article is more cautious.
+For the second model (which includes StressSurvey + Time), if its results were picked up by the popular press, the headline would likely read something like:  
+**“More Time on Social Media Increases Anxiety, Study Finds.”**  
+Even if the actual coefficient for time is small, the press would exaggerate it into a bold cause-and-effect claim.
 
-Now, considering **confirmation bias**:  
-- A **typical parent** would be much more likely to believe the model that shows a **clear harmful effect** (the second one). This fits into their existing worries about kids spending too much time online.  
-- On the other hand, **Facebook, Instagram, and TikTok executives** would prefer the first model if it showed **no effect or a weaker/non-significant relationship**. That allows them to argue their platforms are not directly to blame for rising anxiety and shift responsibility elsewhere.
+In terms of confirmation bias:  
+- A **typical parent** would be more likely to believe the second model (StressSurvey + Time), since it aligns with their preexisting concerns that social media harms their children.  
+- **Facebook, Instagram, and TikTok executives** would prefer the first model (Stress only), because it suggests anxiety is driven by stress in general rather than time on their platforms, which protects their public image.
