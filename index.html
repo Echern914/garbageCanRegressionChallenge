@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="python-code" class="level2">
 <h2 class="anchored" data-anchor-id="python-code">Python Code</h2>
-<div id="e3524658" class="cell" data-execution_count="1">
+<div id="d34ffad3" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>    Stress  StressSurvey  Time  Anxiety
 0        0             0   0.0     0.00
@@ -102,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
 <p>run the bivariate regression and examine how the estimated coefficients compare to the true relationship.</p>
 <section id="python-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="python-analysis">Python Analysis</h3>
-<div id="49c12365" class="cell" data-execution_count="2">
+<div id="ec794181" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>=== BIVARIATE REGRESSION RESULTS ===
 Intercept (β₀): -1.524000
@@ -139,7 +139,7 @@ for every 1-unit increase in StressSurvey, Anxiety increases by 1.047000 units.<
 <section id="question-2-create-a-scatter-plot-with-the-regression-line-showing-the-relationship-between-stresssurvey-and-anxiety" class="level2">
 <h2 class="anchored" data-anchor-id="question-2-create-a-scatter-plot-with-the-regression-line-showing-the-relationship-between-stresssurvey-and-anxiety">Question 2: Create a scatter plot with the regression line showing the relationship between StressSurvey and Anxiety</h2>
 <p>Let’s create a focused scatter plot to examine the relationship between StressSurvey and Anxiety, and comment on the fit and potential issues.</p>
-<div id="89b6171a" class="cell" data-execution_count="3">
+<div id="ca3bd9a4" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -157,7 +157,7 @@ between StressSurvey and Anxiety, with a correlation of 0.9493.</code></pre>
 <section id="question-3-run-a-bivariate-regression-showing-the-relationship-between-time-and-anxiety" class="level2">
 <h2 class="anchored" data-anchor-id="question-3-run-a-bivariate-regression-showing-the-relationship-between-time-and-anxiety">Question 3: Run a bivariate regression showing the relationship between Time and Anxiety</h2>
 <p>Now let’s examine the relationship between Time and Anxiety, which is part of the true relationship but often overlooked.</p>
-<div id="57270c10" class="cell" data-execution_count="4">
+<div id="76315d98" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>TIME-ANXIETY REGRESSION RESULTS 
 Intercept (β₀): -3.680136
@@ -177,7 +177,7 @@ RMSE: 3.093269</code></pre>
 <section id="question-4-visualization-of-bivariate-relationship-between-time-and-anxiety" class="level2">
 <h2 class="anchored" data-anchor-id="question-4-visualization-of-bivariate-relationship-between-time-and-anxiety">Question 4: Visualization of bivariate relationship between Time and Anxiety</h2>
 <p>Create a scatter plot with the regression line showing the relationship between Time and Anxiety.</p>
-<div id="5bea963f" class="cell" data-execution_count="5">
+<div id="3b5987f8" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -197,7 +197,7 @@ Missing Stress variable creates incomplete model of true relationship.</code></p
 <section id="question-5-multiple-regression-analysis-of-anxiety-on-both-stresssurvey-and-time" class="level2">
 <h2 class="anchored" data-anchor-id="question-5-multiple-regression-analysis-of-anxiety-on-both-stresssurvey-and-time">Question 5: Multiple regression analysis of Anxiety on both StressSurvey and Time</h2>
 <p>Run a multiple regression of anxiety on both stresssurvey and time. What are the estimated coefficients? How do they compare to the true relationship?</p>
-<div id="a9145c5b" class="cell" data-execution_count="6">
+<div id="1e7d0509" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>MULTIPLE REGRESSION RESULTS
 Intercept (β₀): 0.588758
@@ -228,7 +228,7 @@ True Time coefficient should be: 0.1</code></pre>
 <section id="question-1-multiple-regression-analysis---anxiety-on-both-stress-and-time" class="level2">
 <h2 class="anchored" data-anchor-id="question-1-multiple-regression-analysis---anxiety-on-both-stress-and-time">Question 1: Multiple regression analysis - Anxiety on both Stress and Time</h2>
 <p>Run a multiple regression of anxiety on both stress and time. What are the estimated coefficients? How do they compare to the true relationship?</p>
-<div id="60c2dd5f" class="cell" data-execution_count="7">
+<div id="180dd718" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>MULTIPLE REGRESSION RESULTS (STRESS + TIME)
 Intercept (β₀): -0.000000
@@ -255,7 +255,7 @@ Estimated Intercept: -0.000000 (true should be 0.0)</code></pre>
 </section>
 <section id="question-2-model-comparison" class="level2">
 <h2 class="anchored" data-anchor-id="question-2-model-comparison">Question 2: Model Comparison</h2>
-<div id="c4f3f982" class="cell" data-execution_count="8">
+<div id="8095c199" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
 <pre><code>Model 1 (StressSurvey + Time) Results:
 R² = 0.9350
@@ -272,7 +272,7 @@ Time coefficient = 0.1000</code></pre>
 <h3 class="anchored" data-anchor-id="key-findings">Key Findings</h3>
 <p>Model 2 (true Stress variable) has higher R² than Model 1 (StressSurvey proxy). Both models show statistical significance, but the coefficients are different because Model 1 measures survey responses, not actual stress levels.</p>
 <p><strong>Bottom line</strong>: Statistical significance doesn’t mean you’re measuring the right thing - just that you’re measuring something consistently. ## Model Comparison</p>
-<div id="f3a35fa7" class="cell" data-execution_count="9">
+<div id="10a26901" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
 <pre><code>COMPARISON OF MULTIPLE REGRESSION MODELS
 ==================================================
@@ -306,12 +306,12 @@ KEY FINDINGS:
 <h1>Questions to answer for 95% grade on challenge</h1>
 <section id="question-1-reflect-on-real-world-implications" class="level2">
 <h2 class="anchored" data-anchor-id="question-1-reflect-on-real-world-implications">Question 1: Reflect on real world implications</h2>
-<p>If the second multiple regression model suggested a <strong>statistically significant positive relationship</strong> between social media use and anxiety, a popular press outlet would likely run with a <strong>catchy, exaggerated headline</strong> such as:<br>
-<strong>“More Time on Social Media Directly Increases Teen Anxiety, Study Finds.”</strong><br>
-The press tends to simplify and dramatize findings for clicks and public interest, even if the nuance in the actual academic article is more cautious.</p>
-<p>Now, considering <strong>confirmation bias</strong>:<br>
-- A <strong>typical parent</strong> would be much more likely to believe the model that shows a <strong>clear harmful effect</strong> (the second one). This fits into their existing worries about kids spending too much time online.<br>
-- On the other hand, <strong>Facebook, Instagram, and TikTok executives</strong> would prefer the first model if it showed <strong>no effect or a weaker/non-significant relationship</strong>. That allows them to argue their platforms are not directly to blame for rising anxiety and shift responsibility elsewhere.</p>
+<p>For the second model (which includes StressSurvey + Time), if its results were picked up by the popular press, the headline would likely read something like:<br>
+<strong>“More Time on Social Media Increases Anxiety, Study Finds.”</strong><br>
+Even if the actual coefficient for time is small, the press would exaggerate it into a bold cause-and-effect claim.</p>
+<p>In terms of confirmation bias:<br>
+- A <strong>typical parent</strong> would be more likely to believe the second model (StressSurvey + Time), since it aligns with their preexisting concerns that social media harms their children.<br>
+- <strong>Facebook, Instagram, and TikTok executives</strong> would prefer the first model (Stress only), because it suggests anxiety is driven by stress in general rather than time on their platforms, which protects their public image.</p>
 </section>
 </section>
 
