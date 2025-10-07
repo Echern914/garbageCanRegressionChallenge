@@ -449,35 +449,27 @@ plt.show()
 
 ## Question 2: Model Comparison
 
-Compare the R-squared values and coefficient interpretations between the two multiple regression models. Do both models show statistical significance in all of their coefficient estimates? What does this tell you about the real world implications of multiple regression results?
+
 
 ```{python}
 #| echo: false
-# Compare the two multiple regression models
-print("COMPARISON OF MULTIPLE REGRESSION MODELS")
-print("="*50)
+# Display model comparison results
+print("Model 1 (StressSurvey + Time) Results:")
+print(f"R² = {r2_score(y_multi, y_pred_multi):.4f}")
+print(f"StressSurvey coefficient = {model_multi.coef_[0]:.4f}")
+print(f"Time coefficient = {model_multi.coef_[1]:.4f}")
 
-print("\nMODEL 1: Anxiety ~ StressSurvey + Time")
-print(f"R-squared: {r2_score(y_multi, y_pred_multi):.6f}")
-print(f"StressSurvey coefficient: {model_multi.coef_[0]:.6f}")
-print(f"Time coefficient: {model_multi.coef_[1]:.6f}")
-print(f"Intercept: {model_multi.intercept_:.6f}")
-
-print("\nMODEL 2: Anxiety ~ Stress + Time")
-print(f"R-squared: {r2_score(y_true, y_pred_true):.6f}")
-print(f"Stress coefficient: {model_true.coef_[0]:.6f}")
-print(f"Time coefficient: {model_true.coef_[1]:.6f}")
-print(f"Intercept: {model_true.intercept_:.6f}")
-
-print("\nTRUE RELATIONSHIP: Anxiety = Stress + 0.1 × Time")
-print("Expected coefficients: Stress=1.0, Time=0.1, Intercept=0.0")
-
-print("\nKEY FINDINGS:")
-print(f"• Model 1 R²: {r2_score(y_multi, y_pred_multi):.4f} vs Model 2 R²: {r2_score(y_true, y_pred_true):.4f}")
-print(f"• Model 1 uses proxy variable (StressSurvey), Model 2 uses true variable (Stress)")
-print(f"• Both models show statistical significance, but coefficients differ from true values")
-print(f"• Proxy variables can mislead even in multiple regression settings")
+print("\nModel 2 (Stress + Time) Results:")
+print(f"R² = {r2_score(y_true, y_pred_true):.4f}")
+print(f"Stress coefficient = {model_true.coef_[0]:.4f}")
+print(f"Time coefficient = {model_true.coef_[1]:.4f}")
 ```
+
+### Key Findings
+
+Model 2 (true Stress variable) has higher R² than Model 1 (StressSurvey proxy). Both models show statistical significance, but the coefficients are different because Model 1 measures survey responses, not actual stress levels. 
+
+**Bottom line**: Statistical significance doesn't mean you're measuring the right thing - just that you're measuring something consistently.
 ## Model Comparison
 
 
@@ -508,3 +500,15 @@ print(f"• Model 1 uses proxy variable (StressSurvey), Model 2 uses true variab
 print(f"• Both models show statistical significance, but coefficients differ from true values")
 print(f"• Proxy variables can mislead even in multiple regression settings")
 ```
+
+# Questions to answer for 95% grade on challenge
+
+## Question 1: Reflect on real world implications
+
+If the second multiple regression model suggested a **statistically significant positive relationship** between social media use and anxiety, a popular press outlet would likely run with a **catchy, exaggerated headline** such as:  
+**“More Time on Social Media Directly Increases Teen Anxiety, Study Finds.”**  
+The press tends to simplify and dramatize findings for clicks and public interest, even if the nuance in the actual academic article is more cautious.
+
+Now, considering **confirmation bias**:  
+- A **typical parent** would be much more likely to believe the model that shows a **clear harmful effect** (the second one). This fits into their existing worries about kids spending too much time online.  
+- On the other hand, **Facebook, Instagram, and TikTok executives** would prefer the first model if it showed **no effect or a weaker/non-significant relationship**. That allows them to argue their platforms are not directly to blame for rising anxiety and shift responsibility elsewhere.
