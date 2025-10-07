@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="python-code" class="level2">
 <h2 class="anchored" data-anchor-id="python-code">Python Code</h2>
-<div id="f10879e9" class="cell" data-execution_count="1">
+<div id="0aff4b9e" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>    Stress  StressSurvey  Time  Anxiety
 0        0             0   0.0     0.00
@@ -102,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
 <p>run the bivariate regression and examine how the estimated coefficients compare to the true relationship.</p>
 <section id="python-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="python-analysis">Python Analysis</h3>
-<div id="67639aba" class="cell" data-execution_count="2">
+<div id="49ad5b00" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>=== BIVARIATE REGRESSION RESULTS ===
 Intercept (β₀): -1.524000
@@ -139,7 +139,7 @@ for every 1-unit increase in StressSurvey, Anxiety increases by 1.047000 units.<
 <section id="question-2-create-a-scatter-plot-with-the-regression-line-showing-the-relationship-between-stresssurvey-and-anxiety" class="level2">
 <h2 class="anchored" data-anchor-id="question-2-create-a-scatter-plot-with-the-regression-line-showing-the-relationship-between-stresssurvey-and-anxiety">Question 2: Create a scatter plot with the regression line showing the relationship between StressSurvey and Anxiety</h2>
 <p>Let’s create a focused scatter plot to examine the relationship between StressSurvey and Anxiety, and comment on the fit and potential issues.</p>
-<div id="17e9f08e" class="cell" data-execution_count="3">
+<div id="331098b7" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -157,7 +157,7 @@ between StressSurvey and Anxiety, with a correlation of 0.9493.</code></pre>
 <section id="question-3-run-a-bivariate-regression-showing-the-relationship-between-time-and-anxiety" class="level2">
 <h2 class="anchored" data-anchor-id="question-3-run-a-bivariate-regression-showing-the-relationship-between-time-and-anxiety">Question 3: Run a bivariate regression showing the relationship between Time and Anxiety</h2>
 <p>Now let’s examine the relationship between Time and Anxiety, which is part of the true relationship but often overlooked.</p>
-<div id="420fc94d" class="cell" data-execution_count="4">
+<div id="c224b23a" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>TIME-ANXIETY REGRESSION RESULTS 
 Intercept (β₀): -3.680136
@@ -177,7 +177,7 @@ RMSE: 3.093269</code></pre>
 <section id="question-4-visualization-of-bivariate-relationship-between-time-and-anxiety" class="level2">
 <h2 class="anchored" data-anchor-id="question-4-visualization-of-bivariate-relationship-between-time-and-anxiety">Question 4: Visualization of bivariate relationship between Time and Anxiety</h2>
 <p>Create a scatter plot with the regression line showing the relationship between Time and Anxiety.</p>
-<div id="406b9023" class="cell" data-execution_count="5">
+<div id="d29b1ab7" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -197,7 +197,7 @@ Missing Stress variable creates incomplete model of true relationship.</code></p
 <section id="question-5-multiple-regression-analysis-of-anxiety-on-both-stresssurvey-and-time" class="level2">
 <h2 class="anchored" data-anchor-id="question-5-multiple-regression-analysis-of-anxiety-on-both-stresssurvey-and-time">Question 5: Multiple regression analysis of Anxiety on both StressSurvey and Time</h2>
 <p>Run a multiple regression of anxiety on both stresssurvey and time. What are the estimated coefficients? How do they compare to the true relationship?</p>
-<div id="a764db4e" class="cell" data-execution_count="6">
+<div id="c93ff110" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>MULTIPLE REGRESSION RESULTS
 Intercept (β₀): 0.588758
@@ -228,7 +228,7 @@ True Time coefficient should be: 0.1</code></pre>
 <section id="question-1-multiple-regression-analysis---anxiety-on-both-stress-and-time" class="level2">
 <h2 class="anchored" data-anchor-id="question-1-multiple-regression-analysis---anxiety-on-both-stress-and-time">Question 1: Multiple regression analysis - Anxiety on both Stress and Time</h2>
 <p>Run a multiple regression of anxiety on both stress and time. What are the estimated coefficients? How do they compare to the true relationship?</p>
-<div id="37ca9243" class="cell" data-execution_count="7">
+<div id="3711bf49" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>MULTIPLE REGRESSION RESULTS (STRESS + TIME)
 Intercept (β₀): -0.000000
@@ -255,7 +255,7 @@ Estimated Intercept: -0.000000 (true should be 0.0)</code></pre>
 </section>
 <section id="question-2-model-comparison" class="level2">
 <h2 class="anchored" data-anchor-id="question-2-model-comparison">Question 2: Model Comparison</h2>
-<div id="850ec9b3" class="cell" data-execution_count="8">
+<div id="e0208e3c" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
 <pre><code>Model 1 (StressSurvey + Time) Results:
 R² = 0.9350
@@ -272,7 +272,7 @@ Time coefficient = 0.1000</code></pre>
 <h3 class="anchored" data-anchor-id="key-findings">Key Findings</h3>
 <p>Model 2 (true Stress variable) has higher R² than Model 1 (StressSurvey proxy). Both models show statistical significance, but the coefficients are different because Model 1 measures survey responses, not actual stress levels.</p>
 <p><strong>Bottom line</strong>: Statistical significance doesn’t mean you’re measuring the right thing - just that you’re measuring something consistently. ## Model Comparison</p>
-<div id="813e6613" class="cell" data-execution_count="9">
+<div id="21351bae" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
 <pre><code>COMPARISON OF MULTIPLE REGRESSION MODELS
 ==================================================
