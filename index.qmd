@@ -123,6 +123,8 @@ plt.show()
 print("\nCOEFFICIENT INTERPRETATION")
 print(f"The estimated slope coefficient of {model.coef_[0]:.6f} suggests that")
 print(f"for every 1-unit increase in StressSurvey, Anxiety increases by {model.coef_[0]:.6f} units.")
+print(f"\nNote: This model completely ignores the Time variable, which has a true coefficient of 0.1")
+print(f"in the actual relationship. By excluding Time, we're getting an incomplete picture.")
 
 ```
 
@@ -198,6 +200,10 @@ print(f"Intercept (β₀): {model_time.intercept_:.6f}")
 print(f"Slope (β₁): {model_time.coef_[0]:.6f}")
 print(f"R-squared: {r2_score(y_time, y_pred_time):.6f}")
 print(f"RMSE: {np.sqrt(mean_squared_error(y_time, y_pred_time)):.6f}")
+print(f"\nTime Coefficient Analysis:")
+print(f"Estimated Time coefficient: {model_time.coef_[0]:.6f}")
+print(f"True Time coefficient: 0.1")
+print(f"This model captures only the Time effect but misses the Stress component.")
 
 # Create two specific visualizations for Question 3
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6))
@@ -285,6 +291,9 @@ plt.show()
 print("FIT AND ISSUES ANALYSIS")
 print(f"R² = {r_squared_time:.4f}, Correlation = {correlation_time:.4f}")
 print(f"Estimated coefficient: {model_time.coef_[0]:.4f} (true coefficient = 0.1)")
+print(f"\nTime Coefficient Discussion:")
+print(f"The Time coefficient here is estimated as {model_time.coef_[0]:.4f}, while the true value is 0.1.")
+print(f"The discrepancy shows that omitting Stress biases our estimate of Time's effect.")
 print(f"Issues: Low R² suggests Time alone explains little variance in Anxiety.")
 print(f"Missing Stress variable creates incomplete model of true relationship.")
 ```
@@ -323,7 +332,10 @@ print("True relationship: Anxiety = Stress + 0.1 × Time")
 print("Our model: Anxiety = β₀ + β₁ × StressSurvey + β₂ × Time")
 print(f"Estimated StressSurvey coefficient: {model_multi.coef_[0]:.6f}")
 print(f"Estimated Time coefficient: {model_multi.coef_[1]:.6f}")
-print(f"True Time coefficient should be: 0.1")
+print(f"\nTime Coefficient Discussion:")
+print(f"The estimated Time coefficient is {model_multi.coef_[1]:.6f}, compared to the true value of 0.1.")
+print(f"When we include StressSurvey (a proxy for Stress), the Time coefficient changes")
+print(f"compared to the bivariate model, showing how adding variables affects coefficient estimates.")
 
 # Create actual vs predicted visualization for Question 5
 plt.figure(figsize=(10, 6))
@@ -396,6 +408,10 @@ print("Our model: Anxiety = β₀ + β₁ × Stress + β₂ × Time")
 print(f"Estimated Stress coefficient: {model_true.coef_[0]:.6f} (true should be 1.0)")
 print(f"Estimated Time coefficient: {model_true.coef_[1]:.6f} (true should be 0.1)")
 print(f"Estimated Intercept: {model_true.intercept_:.6f} (true should be 0.0)")
+print(f"\nTime Coefficient Discussion:")
+print(f"Using the true Stress variable, the Time coefficient is {model_true.coef_[1]:.6f}.")
+print(f"This should be very close to 0.1 (the true value), showing that with correct")
+print(f"variables, multiple regression can accurately recover the true relationship.")
 
 # Create two specific visualizations for Question 1
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6))
@@ -461,6 +477,12 @@ print("\nModel 2 (Stress + Time) Results:")
 print(f"R² = {r2_score(y_true, y_pred_true):.4f}")
 print(f"Stress coefficient = {model_true.coef_[0]:.4f}")
 print(f"Time coefficient = {model_true.coef_[1]:.4f}")
+
+print("\nTime Coefficient Comparison:")
+print(f"Model 1 Time coef: {model_multi.coef_[1]:.4f} (using proxy variable)")
+print(f"Model 2 Time coef: {model_true.coef_[1]:.4f} (using true variable)")
+print(f"True Time coef: 0.1")
+print(f"Model 2's Time coefficient is much closer to the true value.")
 ```
 
 ### Key Findings

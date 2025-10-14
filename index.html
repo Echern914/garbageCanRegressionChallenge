@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="python-code" class="level2">
 <h2 class="anchored" data-anchor-id="python-code">Python Code</h2>
-<div id="0aff4b9e" class="cell" data-execution_count="1">
+<div id="87733a83" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>    Stress  StressSurvey  Time  Anxiety
 0        0             0   0.0     0.00
@@ -102,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
 <p>run the bivariate regression and examine how the estimated coefficients compare to the true relationship.</p>
 <section id="python-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="python-analysis">Python Analysis</h3>
-<div id="49ad5b00" class="cell" data-execution_count="2">
+<div id="84c3f45c" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>=== BIVARIATE REGRESSION RESULTS ===
 Intercept (β₀): -1.524000
@@ -127,7 +127,10 @@ Correlation between Stress and StressSurvey: 0.946813</code></pre>
 <pre><code>
 COEFFICIENT INTERPRETATION
 The estimated slope coefficient of 1.047000 suggests that
-for every 1-unit increase in StressSurvey, Anxiety increases by 1.047000 units.</code></pre>
+for every 1-unit increase in StressSurvey, Anxiety increases by 1.047000 units.
+
+Note: This model completely ignores the Time variable, which has a true coefficient of 0.1
+in the actual relationship. By excluding Time, we're getting an incomplete picture.</code></pre>
 </div>
 </div>
 </section>
@@ -139,7 +142,7 @@ for every 1-unit increase in StressSurvey, Anxiety increases by 1.047000 units.<
 <section id="question-2-create-a-scatter-plot-with-the-regression-line-showing-the-relationship-between-stresssurvey-and-anxiety" class="level2">
 <h2 class="anchored" data-anchor-id="question-2-create-a-scatter-plot-with-the-regression-line-showing-the-relationship-between-stresssurvey-and-anxiety">Question 2: Create a scatter plot with the regression line showing the relationship between StressSurvey and Anxiety</h2>
 <p>Let’s create a focused scatter plot to examine the relationship between StressSurvey and Anxiety, and comment on the fit and potential issues.</p>
-<div id="331098b7" class="cell" data-execution_count="3">
+<div id="ea8d0aef" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -157,13 +160,18 @@ between StressSurvey and Anxiety, with a correlation of 0.9493.</code></pre>
 <section id="question-3-run-a-bivariate-regression-showing-the-relationship-between-time-and-anxiety" class="level2">
 <h2 class="anchored" data-anchor-id="question-3-run-a-bivariate-regression-showing-the-relationship-between-time-and-anxiety">Question 3: Run a bivariate regression showing the relationship between Time and Anxiety</h2>
 <p>Now let’s examine the relationship between Time and Anxiety, which is part of the true relationship but often overlooked.</p>
-<div id="c224b23a" class="cell" data-execution_count="4">
+<div id="6b5e703d" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>TIME-ANXIETY REGRESSION RESULTS 
 Intercept (β₀): -3.680136
 Slope (β₁): 5.340592
 R-squared: 0.563039
-RMSE: 3.093269</code></pre>
+RMSE: 3.093269
+
+Time Coefficient Analysis:
+Estimated Time coefficient: 5.340592
+True Time coefficient: 0.1
+This model captures only the Time effect but misses the Stress component.</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -177,7 +185,7 @@ RMSE: 3.093269</code></pre>
 <section id="question-4-visualization-of-bivariate-relationship-between-time-and-anxiety" class="level2">
 <h2 class="anchored" data-anchor-id="question-4-visualization-of-bivariate-relationship-between-time-and-anxiety">Question 4: Visualization of bivariate relationship between Time and Anxiety</h2>
 <p>Create a scatter plot with the regression line showing the relationship between Time and Anxiety.</p>
-<div id="d29b1ab7" class="cell" data-execution_count="5">
+<div id="d47288a4" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -189,6 +197,10 @@ RMSE: 3.093269</code></pre>
 <pre><code>FIT AND ISSUES ANALYSIS
 R² = 0.5630, Correlation = 0.7504
 Estimated coefficient: 5.3406 (true coefficient = 0.1)
+
+Time Coefficient Discussion:
+The Time coefficient here is estimated as 5.3406, while the true value is 0.1.
+The discrepancy shows that omitting Stress biases our estimate of Time's effect.
 Issues: Low R² suggests Time alone explains little variance in Anxiety.
 Missing Stress variable creates incomplete model of true relationship.</code></pre>
 </div>
@@ -197,7 +209,7 @@ Missing Stress variable creates incomplete model of true relationship.</code></p
 <section id="question-5-multiple-regression-analysis-of-anxiety-on-both-stresssurvey-and-time" class="level2">
 <h2 class="anchored" data-anchor-id="question-5-multiple-regression-analysis-of-anxiety-on-both-stresssurvey-and-time">Question 5: Multiple regression analysis of Anxiety on both StressSurvey and Time</h2>
 <p>Run a multiple regression of anxiety on both stresssurvey and time. What are the estimated coefficients? How do they compare to the true relationship?</p>
-<div id="c93ff110" class="cell" data-execution_count="6">
+<div id="481fdf64" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>MULTIPLE REGRESSION RESULTS
 Intercept (β₀): 0.588758
@@ -211,7 +223,11 @@ True relationship: Anxiety = Stress + 0.1 × Time
 Our model: Anxiety = β₀ + β₁ × StressSurvey + β₂ × Time
 Estimated StressSurvey coefficient: 1.426926
 Estimated Time coefficient: -2.779944
-True Time coefficient should be: 0.1</code></pre>
+
+Time Coefficient Discussion:
+The estimated Time coefficient is -2.779944, compared to the true value of 0.1.
+When we include StressSurvey (a proxy for Stress), the Time coefficient changes
+compared to the bivariate model, showing how adding variables affects coefficient estimates.</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -228,7 +244,7 @@ True Time coefficient should be: 0.1</code></pre>
 <section id="question-1-multiple-regression-analysis---anxiety-on-both-stress-and-time" class="level2">
 <h2 class="anchored" data-anchor-id="question-1-multiple-regression-analysis---anxiety-on-both-stress-and-time">Question 1: Multiple regression analysis - Anxiety on both Stress and Time</h2>
 <p>Run a multiple regression of anxiety on both stress and time. What are the estimated coefficients? How do they compare to the true relationship?</p>
-<div id="3711bf49" class="cell" data-execution_count="7">
+<div id="2ea99fc1" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>MULTIPLE REGRESSION RESULTS (STRESS + TIME)
 Intercept (β₀): -0.000000
@@ -242,7 +258,12 @@ True relationship: Anxiety = Stress + 0.1 × Time
 Our model: Anxiety = β₀ + β₁ × Stress + β₂ × Time
 Estimated Stress coefficient: 1.000000 (true should be 1.0)
 Estimated Time coefficient: 0.100000 (true should be 0.1)
-Estimated Intercept: -0.000000 (true should be 0.0)</code></pre>
+Estimated Intercept: -0.000000 (true should be 0.0)
+
+Time Coefficient Discussion:
+Using the true Stress variable, the Time coefficient is 0.100000.
+This should be very close to 0.1 (the true value), showing that with correct
+variables, multiple regression can accurately recover the true relationship.</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -255,7 +276,7 @@ Estimated Intercept: -0.000000 (true should be 0.0)</code></pre>
 </section>
 <section id="question-2-model-comparison" class="level2">
 <h2 class="anchored" data-anchor-id="question-2-model-comparison">Question 2: Model Comparison</h2>
-<div id="e0208e3c" class="cell" data-execution_count="8">
+<div id="29e25751" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
 <pre><code>Model 1 (StressSurvey + Time) Results:
 R² = 0.9350
@@ -265,14 +286,20 @@ Time coefficient = -2.7799
 Model 2 (Stress + Time) Results:
 R² = 1.0000
 Stress coefficient = 1.0000
-Time coefficient = 0.1000</code></pre>
+Time coefficient = 0.1000
+
+Time Coefficient Comparison:
+Model 1 Time coef: -2.7799 (using proxy variable)
+Model 2 Time coef: 0.1000 (using true variable)
+True Time coef: 0.1
+Model 2's Time coefficient is much closer to the true value.</code></pre>
 </div>
 </div>
 <section id="key-findings" class="level3">
 <h3 class="anchored" data-anchor-id="key-findings">Key Findings</h3>
 <p>Model 2 (true Stress variable) has higher R² than Model 1 (StressSurvey proxy). Both models show statistical significance, but the coefficients are different because Model 1 measures survey responses, not actual stress levels.</p>
 <p><strong>Bottom line</strong>: Statistical significance doesn’t mean you’re measuring the right thing - just that you’re measuring something consistently. ## Model Comparison</p>
-<div id="21351bae" class="cell" data-execution_count="9">
+<div id="7c9944bc" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
 <pre><code>COMPARISON OF MULTIPLE REGRESSION MODELS
 ==================================================
