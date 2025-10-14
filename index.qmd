@@ -255,12 +255,7 @@ plt.figure(figsize=(10, 6))
 
 # Scatter plot with regression line
 plt.scatter(observDF['Time'], observDF['Anxiety'], alpha=0.7, color='darkgreen', s=80, edgecolors='white', linewidth=1)
-plt.plot(observDF['Time'], y_pred_time, color='red', linewidth=3, label=f'Estimated Line: y = {model_time.intercept_:.3f} + {model_time.coef_[0]:.3f}x')
-
-# Add true relationship line (Time coefficient = 0.1)
-true_intercept = 0  # Assuming intercept is 0 for true relationship
-true_line = true_intercept + 0.1 * observDF['Time']
-plt.plot(observDF['Time'], true_line, color='blue', linewidth=3, linestyle='--', label='True Line: y = 0 + 0.1x')
+plt.plot(observDF['Time'], y_pred_time, color='red', linewidth=3, label=f'Regression Line: y = {model_time.intercept_:.3f} + {model_time.coef_[0]:.3f}x')
 
 # Add coordinate points for each data point
 for i, row in observDF.iterrows():

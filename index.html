@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="python-code" class="level2">
 <h2 class="anchored" data-anchor-id="python-code">Python Code</h2>
-<div id="87733a83" class="cell" data-execution_count="1">
+<div id="58003ff6" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>    Stress  StressSurvey  Time  Anxiety
 0        0             0   0.0     0.00
@@ -102,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
 <p>run the bivariate regression and examine how the estimated coefficients compare to the true relationship.</p>
 <section id="python-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="python-analysis">Python Analysis</h3>
-<div id="84c3f45c" class="cell" data-execution_count="2">
+<div id="504e19c5" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>=== BIVARIATE REGRESSION RESULTS ===
 Intercept (β₀): -1.524000
@@ -142,7 +142,7 @@ in the actual relationship. By excluding Time, we're getting an incomplete pictu
 <section id="question-2-create-a-scatter-plot-with-the-regression-line-showing-the-relationship-between-stresssurvey-and-anxiety" class="level2">
 <h2 class="anchored" data-anchor-id="question-2-create-a-scatter-plot-with-the-regression-line-showing-the-relationship-between-stresssurvey-and-anxiety">Question 2: Create a scatter plot with the regression line showing the relationship between StressSurvey and Anxiety</h2>
 <p>Let’s create a focused scatter plot to examine the relationship between StressSurvey and Anxiety, and comment on the fit and potential issues.</p>
-<div id="ea8d0aef" class="cell" data-execution_count="3">
+<div id="eddab144" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -160,7 +160,7 @@ between StressSurvey and Anxiety, with a correlation of 0.9493.</code></pre>
 <section id="question-3-run-a-bivariate-regression-showing-the-relationship-between-time-and-anxiety" class="level2">
 <h2 class="anchored" data-anchor-id="question-3-run-a-bivariate-regression-showing-the-relationship-between-time-and-anxiety">Question 3: Run a bivariate regression showing the relationship between Time and Anxiety</h2>
 <p>Now let’s examine the relationship between Time and Anxiety, which is part of the true relationship but often overlooked.</p>
-<div id="6b5e703d" class="cell" data-execution_count="4">
+<div id="fed76579" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>TIME-ANXIETY REGRESSION RESULTS 
 Intercept (β₀): -3.680136
@@ -185,7 +185,7 @@ This model captures only the Time effect but misses the Stress component.</code>
 <section id="question-4-visualization-of-bivariate-relationship-between-time-and-anxiety" class="level2">
 <h2 class="anchored" data-anchor-id="question-4-visualization-of-bivariate-relationship-between-time-and-anxiety">Question 4: Visualization of bivariate relationship between Time and Anxiety</h2>
 <p>Create a scatter plot with the regression line showing the relationship between Time and Anxiety.</p>
-<div id="d47288a4" class="cell" data-execution_count="5">
+<div id="1a848a78" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -209,7 +209,7 @@ Missing Stress variable creates incomplete model of true relationship.</code></p
 <section id="question-5-multiple-regression-analysis-of-anxiety-on-both-stresssurvey-and-time" class="level2">
 <h2 class="anchored" data-anchor-id="question-5-multiple-regression-analysis-of-anxiety-on-both-stresssurvey-and-time">Question 5: Multiple regression analysis of Anxiety on both StressSurvey and Time</h2>
 <p>Run a multiple regression of anxiety on both stresssurvey and time. What are the estimated coefficients? How do they compare to the true relationship?</p>
-<div id="481fdf64" class="cell" data-execution_count="6">
+<div id="ebc311e4" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>MULTIPLE REGRESSION RESULTS
 Intercept (β₀): 0.588758
@@ -244,7 +244,7 @@ compared to the bivariate model, showing how adding variables affects coefficien
 <section id="question-1-multiple-regression-analysis---anxiety-on-both-stress-and-time" class="level2">
 <h2 class="anchored" data-anchor-id="question-1-multiple-regression-analysis---anxiety-on-both-stress-and-time">Question 1: Multiple regression analysis - Anxiety on both Stress and Time</h2>
 <p>Run a multiple regression of anxiety on both stress and time. What are the estimated coefficients? How do they compare to the true relationship?</p>
-<div id="2ea99fc1" class="cell" data-execution_count="7">
+<div id="9e51e8f9" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>MULTIPLE REGRESSION RESULTS (STRESS + TIME)
 Intercept (β₀): -0.000000
@@ -276,7 +276,7 @@ variables, multiple regression can accurately recover the true relationship.</co
 </section>
 <section id="question-2-model-comparison" class="level2">
 <h2 class="anchored" data-anchor-id="question-2-model-comparison">Question 2: Model Comparison</h2>
-<div id="29e25751" class="cell" data-execution_count="8">
+<div id="b655cd7a" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
 <pre><code>Model 1 (StressSurvey + Time) Results:
 R² = 0.9350
@@ -299,7 +299,7 @@ Model 2's Time coefficient is much closer to the true value.</code></pre>
 <h3 class="anchored" data-anchor-id="key-findings">Key Findings</h3>
 <p>Model 2 (true Stress variable) has higher R² than Model 1 (StressSurvey proxy). Both models show statistical significance, but the coefficients are different because Model 1 measures survey responses, not actual stress levels.</p>
 <p><strong>Bottom line</strong>: Statistical significance doesn’t mean you’re measuring the right thing - just that you’re measuring something consistently. ## Model Comparison</p>
-<div id="7c9944bc" class="cell" data-execution_count="9">
+<div id="8d3372ef" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
 <pre><code>COMPARISON OF MULTIPLE REGRESSION MODELS
 ==================================================
